@@ -41,7 +41,7 @@ as the prefix (replacing <kbd>Ctrl</kbd>+<kbd>b</kbd>, GNU screen style), and a
 randomly chosen colour palette baked into your `.tmux.conf.local`.
 
 ```sh
-curl -fsSL "https://github.com/gpakosz/.tmux/raw/refs/heads/master/install.sh#$(date +%s)" | bash
+curl -fsSL "https://github.com/user01/.tmux/raw/refs/heads/master/install.sh#$(date +%s)" | bash
 ```
 
 To pin a specific colour palette instead of letting the installer pick at
@@ -49,7 +49,7 @@ random, set `OH_MY_TMUX_PALETTE` to one of `default`, `dracula`, `nord`,
 `gruvbox`, `catppuccin`, `tokyonight`, `solarized`, `monokai`:
 
 ```sh
-curl -fsSL "https://github.com/gpakosz/.tmux/raw/refs/heads/master/install.sh#$(date +%s)" | OH_MY_TMUX_PALETTE=dracula bash
+curl -fsSL "https://github.com/user01/.tmux/raw/refs/heads/master/install.sh#$(date +%s)" | OH_MY_TMUX_PALETTE=dracula bash
 ```
 
 The palette lives in the 8 commented blocks at the top of your
@@ -59,14 +59,14 @@ block (and re-commenting the active one), then reloading with `<prefix> r`.
 **Manual installation in `~`**
 ```sh
 cd
-git clone --single-branch https://github.com/gpakosz/.tmux.git
+git clone --single-branch https://github.com/user01/.tmux.git
 ln -s -f .tmux/.tmux.conf
 cp .tmux/.tmux.conf.local .
 ```
 
 **Manual installation in `$XDG_CONFIG_HOME/tmux`**
 ```sh
-git clone --single-branch https://github.com/gpakosz/.tmux.git "/path/to/oh-my-tmux"
+git clone --single-branch https://github.com/user01/.tmux.git "/path/to/oh-my-tmux"
 mkdir -p "$XDG_CONFIG_HOME/tmux"
 ln -s /path/to/oh-my-tmux/.tmux.conf "$XDG_CONFIG_HOME/tmux/tmux.conf"
 cp /path/to/oh-my-tmux/.tmux.conf.local "$XDG_CONFIG_HOME/tmux/tmux.conf.local"
@@ -74,7 +74,7 @@ cp /path/to/oh-my-tmux/.tmux.conf.local "$XDG_CONFIG_HOME/tmux/tmux.conf.local"
 
 **Manual installation `~/.config/tmux`**
 ```sh
-git clone --single-branch https://github.com/gpakosz/.tmux.git "/path/to/oh-my-tmux"
+git clone --single-branch https://github.com/user01/.tmux.git "/path/to/oh-my-tmux"
 mkdir -p ~/.config/tmux
 ln -s /path/to/oh-my-tmux/.tmux.conf ~/.config/tmux/tmux.conf
 cp /path/to/oh-my-tmux/.tmux.conf.local ~/.config/tmux/tmux.conf.local
