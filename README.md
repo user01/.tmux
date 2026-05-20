@@ -35,33 +35,49 @@ You can install Oh my tmux! at any of the following locations:
 
 **Automatic installation**
 
-Copy the following command and paste it in your terminal.
-```
+Copy the following command and paste it in your terminal. The installer ships
+with mouse mode on, a 10 000-line scrollback history, <kbd>Ctrl</kbd>+<kbd>a</kbd>
+as the prefix (replacing <kbd>Ctrl</kbd>+<kbd>b</kbd>, GNU screen style), and a
+randomly chosen colour palette baked into your `.tmux.conf.local`.
+
+```sh
 curl -fsSL "https://github.com/gpakosz/.tmux/raw/refs/heads/master/install.sh#$(date +%s)" | bash
 ```
 
-**Manual installation in `~`**
+To pin a specific colour palette instead of letting the installer pick at
+random, set `OH_MY_TMUX_PALETTE` to one of `default`, `dracula`, `nord`,
+`gruvbox`, `catppuccin`, `tokyonight`, `solarized`, `monokai`:
+
+```sh
+curl -fsSL "https://github.com/gpakosz/.tmux/raw/refs/heads/master/install.sh#$(date +%s)" | OH_MY_TMUX_PALETTE=dracula bash
 ```
-$ cd
-$ git clone --single-branch https://github.com/gpakosz/.tmux.git
-$ ln -s -f .tmux/.tmux.conf
-$ cp .tmux/.tmux.conf.local .
+
+The palette lives in the 8 commented blocks at the top of your
+`.tmux.conf.local` — you can swap palettes any time by uncommenting another
+block (and re-commenting the active one), then reloading with `<prefix> r`.
+
+**Manual installation in `~`**
+```sh
+cd
+git clone --single-branch https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
 ```
 
 **Manual installation in `$XDG_CONFIG_HOME/tmux`**
-```
-$ git clone --single-branch https://github.com/gpakosz/.tmux.git "/path/to/oh-my-tmux"
-$ mkdir -p "$XDG_CONFIG_HOME/tmux"
-$ ln -s /path/to/oh-my-tmux/.tmux.conf "$XDG_CONFIG_HOME/tmux/tmux.conf"
-$ cp /path/to/oh-my-tmux/.tmux.conf.local "$XDG_CONFIG_HOME/tmux/tmux.conf.local"
+```sh
+git clone --single-branch https://github.com/gpakosz/.tmux.git "/path/to/oh-my-tmux"
+mkdir -p "$XDG_CONFIG_HOME/tmux"
+ln -s /path/to/oh-my-tmux/.tmux.conf "$XDG_CONFIG_HOME/tmux/tmux.conf"
+cp /path/to/oh-my-tmux/.tmux.conf.local "$XDG_CONFIG_HOME/tmux/tmux.conf.local"
 ```
 
 **Manual installation `~/.config/tmux`**
-```
-$ git clone --single-branch https://github.com/gpakosz/.tmux.git "/path/to/oh-my-tmux"
-$ mkdir -p ~/.config/tmux
-$ ln -s /path/to/oh-my-tmux/.tmux.conf ~/.config/tmux/tmux.conf
-$ cp /path/to/oh-my-tmux/.tmux.conf.local ~/.config/tmux/tmux.conf.local
+```sh
+git clone --single-branch https://github.com/gpakosz/.tmux.git "/path/to/oh-my-tmux"
+mkdir -p ~/.config/tmux
+ln -s /path/to/oh-my-tmux/.tmux.conf ~/.config/tmux/tmux.conf
+cp /path/to/oh-my-tmux/.tmux.conf.local ~/.config/tmux/tmux.conf.local
 ```
 ⚠️ When installing `$XDG_CONFIG_HOME/tmux` or `~/.config/tmux`, the configuration
 file names don't have a leading `.` character.
@@ -93,8 +109,8 @@ Troubleshooting
     Please, try make sure no tmux client or server process is currently running.
 
     Then launch tmux with:
-    ```
-    $ tmux -f /dev/null -L test
+    ```sh
+    tmux -f /dev/null -L test
     ```
 
     Which launches a new tmux client/server pair without loading any

@@ -110,6 +110,35 @@ install() {
     printf '✅ Copied %s → %s\n' "${OH_MY_TMUX_CLONE_PATH/#"$HOME"/'~'}/.tmux.conf.local" "${TMUX_CONF_LOCAL/#"$HOME"/'~'}" >&2
   fi
 
+  palettes=(default dracula nord gruvbox catppuccin tokyonight solarized monokai)
+  if [ -n "$OH_MY_TMUX_PALETTE" ]; then
+    palette="$OH_MY_TMUX_PALETTE"
+    valid=false
+    for p in "${palettes[@]}"; do
+      [ "$p" = "$palette" ] && valid=true && break
+    done
+    if ! $valid; then
+      printf '⚠️  Unknown palette "%s", picking randomly. Known: %s\n' "$palette" "${palettes[*]}" >&2
+      palette="${palettes[RANDOM % ${#palettes[@]}]}"
+    fi
+  else
+    palette="${palettes[RANDOM % ${#palettes[@]}]}"
+  fi
+
+  printf '🎨 Activating colour palette: %s\n' "$palette" >&2
+  if ! is_true "$DRY_RUN" && [ -f "$TMUX_CONF_LOCAL" ]; then
+    awk -v chosen="$palette" '
+      /^# >>> palette: / { in_block = 1; active = ($4 == chosen); print; next }
+      /^# <<< palette$/  { in_block = 0; print; next }
+      in_block && /^#?tmux_conf_theme_colour_[0-9]+=/ {
+        if (active) { sub(/^#/, "") }
+        else if ($0 !~ /^#/) { $0 = "#" $0 }
+        print; next
+      }
+      { print }
+    ' "$TMUX_CONF_LOCAL" > "$TMUX_CONF_LOCAL.swap" && mv "$TMUX_CONF_LOCAL.swap" "$TMUX_CONF_LOCAL"
+  fi
+
   tmux() {
     ${TMUX_PROGRAM:-tmux} ${TMUX_SOCKET:+-S "$TMUX_SOCKET"} "$@"
   }

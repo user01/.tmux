@@ -85,7 +85,18 @@ tmux_conf_24b_colour=auto
 #   - tmux_conf_theme_synchronized
 tmux_conf_theme=enabled
 
-# default theme
+# -- colour palettes -----------------------------------------------------------
+#
+# 8 palettes ship with this configuration. install.sh randomly activates one of
+# them at install time; pass OH_MY_TMUX_PALETTE=<name> to pick a specific one.
+#
+# to swap palettes by hand:
+#   - uncomment all 17 `tmux_conf_theme_colour_<N>` lines in the desired palette
+#   - re-comment those lines in the previously active palette
+# every block is delimited by `# >>> palette: <name>` / `# <<< palette` markers
+# so the install script can do the comment swap automatically.
+
+# >>> palette: default
 tmux_conf_theme_colour_1="#080808"    # dark gray
 tmux_conf_theme_colour_2="#303030"    # gray
 tmux_conf_theme_colour_3="#8a8a8a"    # light gray
@@ -103,25 +114,147 @@ tmux_conf_theme_colour_14="#080808"   # dark gray
 tmux_conf_theme_colour_15="#080808"   # dark gray
 tmux_conf_theme_colour_16="#d70000"   # red
 tmux_conf_theme_colour_17="#e4e4e4"   # white
+# <<< palette
 
-# default theme (ansi)
-#tmux_conf_theme_colour_1="colour0"
-#tmux_conf_theme_colour_2="colour8"
-#tmux_conf_theme_colour_3="colour8"
-#tmux_conf_theme_colour_4="colour14"
-#tmux_conf_theme_colour_5="colour11"
-#tmux_conf_theme_colour_6="colour0"
-#tmux_conf_theme_colour_7="colour15"
-#tmux_conf_theme_colour_8="colour0"
-#tmux_conf_theme_colour_9="colour11"
-#tmux_conf_theme_colour_10="colour13"
-#tmux_conf_theme_colour_11="colour10"
-#tmux_conf_theme_colour_12="colour8"
-#tmux_conf_theme_colour_13="colour15"
-#tmux_conf_theme_colour_14="colour0"
-#tmux_conf_theme_colour_15="colour0"
-#tmux_conf_theme_colour_16="colour1"
-#tmux_conf_theme_colour_17="colour15"
+# >>> palette: dracula
+#tmux_conf_theme_colour_1="#282a36"   # background
+#tmux_conf_theme_colour_2="#44475a"   # current line
+#tmux_conf_theme_colour_3="#6272a4"   # comment
+#tmux_conf_theme_colour_4="#bd93f9"   # purple
+#tmux_conf_theme_colour_5="#f1fa8c"   # yellow
+#tmux_conf_theme_colour_6="#282a36"   # background
+#tmux_conf_theme_colour_7="#f8f8f2"   # foreground
+#tmux_conf_theme_colour_8="#282a36"   # background
+#tmux_conf_theme_colour_9="#f1fa8c"   # yellow
+#tmux_conf_theme_colour_10="#ff79c6"  # pink
+#tmux_conf_theme_colour_11="#50fa7b"  # green
+#tmux_conf_theme_colour_12="#6272a4"  # comment
+#tmux_conf_theme_colour_13="#f8f8f2"  # foreground
+#tmux_conf_theme_colour_14="#282a36"  # background
+#tmux_conf_theme_colour_15="#282a36"  # background
+#tmux_conf_theme_colour_16="#ff5555"  # red
+#tmux_conf_theme_colour_17="#f8f8f2"  # foreground
+# <<< palette
+
+# >>> palette: nord
+#tmux_conf_theme_colour_1="#2e3440"   # polar night
+#tmux_conf_theme_colour_2="#3b4252"   # polar night 2
+#tmux_conf_theme_colour_3="#d8dee9"   # snow storm
+#tmux_conf_theme_colour_4="#88c0d0"   # frost
+#tmux_conf_theme_colour_5="#ebcb8b"   # aurora yellow
+#tmux_conf_theme_colour_6="#2e3440"   # polar night
+#tmux_conf_theme_colour_7="#eceff4"   # snow storm light
+#tmux_conf_theme_colour_8="#2e3440"   # polar night
+#tmux_conf_theme_colour_9="#ebcb8b"   # aurora yellow
+#tmux_conf_theme_colour_10="#b48ead"  # aurora purple
+#tmux_conf_theme_colour_11="#a3be8c"  # aurora green
+#tmux_conf_theme_colour_12="#d8dee9"  # snow storm
+#tmux_conf_theme_colour_13="#eceff4"  # snow storm light
+#tmux_conf_theme_colour_14="#2e3440"  # polar night
+#tmux_conf_theme_colour_15="#2e3440"  # polar night
+#tmux_conf_theme_colour_16="#bf616a"  # aurora red
+#tmux_conf_theme_colour_17="#eceff4"  # snow storm light
+# <<< palette
+
+# >>> palette: gruvbox
+#tmux_conf_theme_colour_1="#282828"   # bg0
+#tmux_conf_theme_colour_2="#3c3836"   # bg1
+#tmux_conf_theme_colour_3="#d5c4a1"   # fg2
+#tmux_conf_theme_colour_4="#83a598"   # blue
+#tmux_conf_theme_colour_5="#fabd2f"   # yellow
+#tmux_conf_theme_colour_6="#282828"   # bg0
+#tmux_conf_theme_colour_7="#ebdbb2"   # fg1
+#tmux_conf_theme_colour_8="#282828"   # bg0
+#tmux_conf_theme_colour_9="#fabd2f"   # yellow
+#tmux_conf_theme_colour_10="#d3869b"  # purple
+#tmux_conf_theme_colour_11="#b8bb26"  # green
+#tmux_conf_theme_colour_12="#d5c4a1"  # fg2
+#tmux_conf_theme_colour_13="#ebdbb2"  # fg1
+#tmux_conf_theme_colour_14="#282828"  # bg0
+#tmux_conf_theme_colour_15="#282828"  # bg0
+#tmux_conf_theme_colour_16="#fb4934"  # red
+#tmux_conf_theme_colour_17="#ebdbb2"  # fg1
+# <<< palette
+
+# >>> palette: catppuccin
+#tmux_conf_theme_colour_1="#1e1e2e"   # base
+#tmux_conf_theme_colour_2="#313244"   # surface0
+#tmux_conf_theme_colour_3="#a6adc8"   # subtext0
+#tmux_conf_theme_colour_4="#89b4fa"   # blue
+#tmux_conf_theme_colour_5="#f9e2af"   # yellow
+#tmux_conf_theme_colour_6="#1e1e2e"   # base
+#tmux_conf_theme_colour_7="#cdd6f4"   # text
+#tmux_conf_theme_colour_8="#1e1e2e"   # base
+#tmux_conf_theme_colour_9="#f9e2af"   # yellow
+#tmux_conf_theme_colour_10="#f5c2e7"  # pink
+#tmux_conf_theme_colour_11="#a6e3a1"  # green
+#tmux_conf_theme_colour_12="#a6adc8"  # subtext0
+#tmux_conf_theme_colour_13="#cdd6f4"  # text
+#tmux_conf_theme_colour_14="#1e1e2e"  # base
+#tmux_conf_theme_colour_15="#1e1e2e"  # base
+#tmux_conf_theme_colour_16="#f38ba8"  # red
+#tmux_conf_theme_colour_17="#cdd6f4"  # text
+# <<< palette
+
+# >>> palette: tokyonight
+#tmux_conf_theme_colour_1="#1a1b26"   # bg
+#tmux_conf_theme_colour_2="#24283b"   # bg highlight
+#tmux_conf_theme_colour_3="#a9b1d6"   # fg dim
+#tmux_conf_theme_colour_4="#7aa2f7"   # blue
+#tmux_conf_theme_colour_5="#e0af68"   # yellow
+#tmux_conf_theme_colour_6="#1a1b26"   # bg
+#tmux_conf_theme_colour_7="#c0caf5"   # fg
+#tmux_conf_theme_colour_8="#1a1b26"   # bg
+#tmux_conf_theme_colour_9="#e0af68"   # yellow
+#tmux_conf_theme_colour_10="#bb9af7"  # purple
+#tmux_conf_theme_colour_11="#9ece6a"  # green
+#tmux_conf_theme_colour_12="#a9b1d6"  # fg dim
+#tmux_conf_theme_colour_13="#c0caf5"  # fg
+#tmux_conf_theme_colour_14="#1a1b26"  # bg
+#tmux_conf_theme_colour_15="#1a1b26"  # bg
+#tmux_conf_theme_colour_16="#f7768e"  # red
+#tmux_conf_theme_colour_17="#c0caf5"  # fg
+# <<< palette
+
+# >>> palette: solarized
+#tmux_conf_theme_colour_1="#002b36"   # base03
+#tmux_conf_theme_colour_2="#073642"   # base02
+#tmux_conf_theme_colour_3="#839496"   # base0
+#tmux_conf_theme_colour_4="#268bd2"   # blue
+#tmux_conf_theme_colour_5="#b58900"   # yellow
+#tmux_conf_theme_colour_6="#002b36"   # base03
+#tmux_conf_theme_colour_7="#eee8d5"   # base2
+#tmux_conf_theme_colour_8="#002b36"   # base03
+#tmux_conf_theme_colour_9="#b58900"   # yellow
+#tmux_conf_theme_colour_10="#d33682"  # magenta
+#tmux_conf_theme_colour_11="#859900"  # green
+#tmux_conf_theme_colour_12="#839496"  # base0
+#tmux_conf_theme_colour_13="#eee8d5"  # base2
+#tmux_conf_theme_colour_14="#002b36"  # base03
+#tmux_conf_theme_colour_15="#002b36"  # base03
+#tmux_conf_theme_colour_16="#dc322f"  # red
+#tmux_conf_theme_colour_17="#eee8d5"  # base2
+# <<< palette
+
+# >>> palette: monokai
+#tmux_conf_theme_colour_1="#272822"   # background
+#tmux_conf_theme_colour_2="#3e3d32"   # selection
+#tmux_conf_theme_colour_3="#75715e"   # comment
+#tmux_conf_theme_colour_4="#66d9ef"   # cyan
+#tmux_conf_theme_colour_5="#e6db74"   # yellow
+#tmux_conf_theme_colour_6="#272822"   # background
+#tmux_conf_theme_colour_7="#f8f8f2"   # foreground
+#tmux_conf_theme_colour_8="#272822"   # background
+#tmux_conf_theme_colour_9="#e6db74"   # yellow
+#tmux_conf_theme_colour_10="#f92672"  # pink
+#tmux_conf_theme_colour_11="#a6e22e"  # green
+#tmux_conf_theme_colour_12="#75715e"  # comment
+#tmux_conf_theme_colour_13="#f8f8f2"  # foreground
+#tmux_conf_theme_colour_14="#272822"  # background
+#tmux_conf_theme_colour_15="#272822"  # background
+#tmux_conf_theme_colour_16="#fd971f"  # orange
+#tmux_conf_theme_colour_17="#f8f8f2"  # foreground
+# <<< palette
 
 # window style
 tmux_conf_theme_window_fg="default"
@@ -384,22 +517,22 @@ tmux_conf_urlscan_options="--compact --dedupe"
 # this is the place to override or undo settings
 
 # increase history size
-#set -g history-limit 10000
+set -g history-limit 10000
 
 # start with mouse mode enabled
-#set -g mouse on
+set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 #set -g status-keys vi
 #set -g mode-keys vi
 
-# replace C-b by C-a instead of using both prefixes
-# set -gu prefix2
-# unbind C-a
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
+# replace C-b by C-a instead of using both prefixes (GNU screen style)
+set -gu prefix2
+unbind C-a
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
 
 # if you don't want Oh my tmux! to alter a binding or a setting, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
